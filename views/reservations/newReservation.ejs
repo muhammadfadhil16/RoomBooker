@@ -1,0 +1,57 @@
+<% include ../partials/header %> 
+
+
+<div class="container">
+    <h1>Create new reservation!</h1>
+    <div class="row">
+        <div>
+            <form action="/reservations" method="POST">
+                <h3>Choose room</h3>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Example multiple select</label>
+                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                        <option></option>
+                    </select>
+                </div>
+
+                <h3>Choose date</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class='col-sm-6'>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" placeholder="reservation's topic">
+                </div>
+
+                <h3>You need to type username and password to confirm reservation!</h3>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">
+                        Submit!
+                    </button>
+                </div>
+            </form>
+            <a href="/rooms">Go back...</a>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer %> 
