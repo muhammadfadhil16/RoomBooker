@@ -1,0 +1,33 @@
+<% include ../partials/header %> 
+
+<h1>Whole rooms you can book</h1>
+
+<a href="/rooms/new" class="btn btn-primary">Add room</a>
+<a class="btn btn-primary">Delete room</a>
+
+<div class="container">
+    <% rooms.forEach(function(room){ %>
+        <div class="row">
+            <div class="col">
+                <%= room.name %>
+            </div>
+            <div class="col">
+                <%= room.roomSize %>
+            </div>
+            <div class="col">
+                <%= room.roomLocation.floor %>
+            </div>
+            <div class="col">
+                <%= room.roomLocation.sector %>
+            </div>  
+            <div class="col">
+                <a class="btn btn-success" href="/rooms/<%= room.roomId %>">See details</a>
+            </div>  
+        </div>    
+    <% }); %>
+</div>
+
+    
+
+
+<% include ../partials/footer %> 
