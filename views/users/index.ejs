@@ -1,0 +1,33 @@
+<% include ../partials/header %> 
+
+<h1>Whole rooms you can book</h1>
+
+<a href="/users/new" class="btn btn-primary">Add user</a>
+<a class="btn btn-primary">Delete user</a>
+
+<div class="container">
+    <% users.forEach(function(user){ %>
+        <div class="row">
+            <div class="col">
+                <%= user.name %>
+            </div>
+            <div class="col">
+                <%= user.surname %>
+            </div>
+            <div class="col">
+                <%= user.userContact.email %>
+            </div>
+            <div class="col">
+                <%= user.company.name %>
+            </div>  
+            <div class="col">
+                <a class="btn btn-success" href="/users/<%= user.id %>">See details</a>
+            </div>  
+        </div>    
+    <% }); %>
+</div>
+
+    
+
+
+<% include ../partials/footer %> 
