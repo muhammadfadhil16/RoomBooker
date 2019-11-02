@@ -1,0 +1,27 @@
+<% include ../partials/header %> 
+
+<h1>Whole reservations</h1>
+
+<a href="/reservations/new" class="btn btn-primary">Add reservation</a>
+<a class="btn btn-primary">Delete room</a>
+
+<div class="container">
+    <% reservations.forEach(function(reservation){ %>
+        <div class="row">
+            <div class="col">
+                <%= reservation.topic.topicName %>
+            </div>
+            <div class="col">
+                <%= reservation.username %>
+            </div>
+            <div class="col">
+                <a class="btn btn-success" href="/reservations/<%= reservation.reservationId %>">See details</a>
+            </div>  
+        </div>    
+    <% }); %>
+</div>
+
+    
+
+
+<% include ../partials/footer %> 
