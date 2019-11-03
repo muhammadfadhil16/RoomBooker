@@ -1,6 +1,6 @@
 <% include ../partials/header %> 
 
-
+<h1><% if(typeof error !== "undefined"){ %><%= error %><% } %></h1>
 <div class="container">
     <h1>Create new reservation!</h1>
     <div class="row">
@@ -8,15 +8,15 @@
             <form action="/reservations" method="POST">
                 <h3>You need to type username and password to confirm reservation!</h3>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="username">
+                    <input class="form-control" type="text" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username %><% } %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="password" placeholder="password">
+                    <input class="form-control" type="text" name="password" placeholder="password" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.password %><% } %>">
                 </div>
                 <h3>Choose room</h3>
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Example multiple select</label>
-                    <select multiple class="form-control" name="roomId">
+                    <select multiple class="form-control" name="roomId" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.roomId %><% } %>">
                         <% rooms.forEach(function(room){ %>
                             <option><%= room.name %></option>
                         <% }); %>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group">
-                        <input class="form-control" type="text" name="topic" placeholder="reservation's topic">
+                        <input class="form-control" type="text" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic %><% } %>">
                 </div>
 
                 <h3>Choose date</h3>
@@ -32,8 +32,8 @@
                     <div class="row">
                         <div class='col-sm-6'>
                             <div class="form-group">
-                                <input id="datetimepicker" type="text" name="start">
-                                <input id="datetimepicker" type="text" name="end">
+                                <input id="datetimepicker" type="text" name="start" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.start %><% } %>">
+                                <input id="datetimepicker" type="text" name="end" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.end %><% } %>">
                             </div>
                         </div>
                     </div>

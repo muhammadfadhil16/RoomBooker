@@ -36,6 +36,7 @@ router.post("/reservations", function(req, res){
 			res.send("Something went wrong! :(");
 		}
 		else{
+			var oldValues = {username: req.body.username, password: req.body.password, roomId: req.body.roomId, topic: req.body.topic, start: req.body.start, end: req.body.end};
 			req.body.roomId = json.find(function(room){
 				return room.name === req.body.roomId;
 			}).roomId;
@@ -43,14 +44,14 @@ router.post("/reservations", function(req, res){
 			req.body.end = req.body.end.split(" ").join("T").replace(/\//g, "-") + ":00+00:00";
 
 			request.post(postNewReservationUrl, {json: req.body}, function(err1, response1, body1){
-				console.log(response1.body);
 
-				if(err1){
-					console.log("Something went wrong! :(");
-				}
-				else{
+				if(!err1 && response1.statusCode === 200){
 					console.log("Reservation post done!");
 					res.redirect("/reservations");
+				}
+				else{
+					console.log("Something went wrong! :(");
+					res.render("reservations/new.ejs", {rooms: json, oldValues: oldValues, error: response1.body.message});
 				}
 			});
 		}
