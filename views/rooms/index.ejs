@@ -1,11 +1,14 @@
 <% include ../partials/header %> 
 
+
 <h1>Whole rooms you can book</h1>
+
+<input id="searchInput" type="text" placeholder="Search..">
 
 <a href="/rooms/new" class="btn btn-primary">Add room</a>
 <a class="btn btn-primary">Delete room</a>
 
-<div class="container">
+<div class="container" id="myTable">
     <% rooms.forEach(function(room){ %>
         <div class="row">
             <div class="col">

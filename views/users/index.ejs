@@ -2,10 +2,12 @@
 
 <h1>Whole rooms you can book</h1>
 
+<input id="searchInput" type="text" placeholder="Search..">
+
 <a href="/users/new" class="btn btn-primary">Add user</a>
 <a class="btn btn-primary">Delete user</a>
 
-<div class="container">
+<div class="container" id="myTable">
     <% users.forEach(function(user){ %>
         <div class="row">
             <div class="col">

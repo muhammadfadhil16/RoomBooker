@@ -2,10 +2,12 @@
 
 <h1>Whole reservations</h1>
 
+<input id="searchInput" type="text" placeholder="Search..">
+
 <a href="/reservations/new" class="btn btn-primary">Add reservation</a>
 <a class="btn btn-primary">Delete room</a>
 
-<div class="container">
+<div class="container" id="myTable">
     <% reservations.forEach(function(reservation){ %>
         <div class="row">
             <div class="col">

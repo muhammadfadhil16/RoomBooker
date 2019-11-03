@@ -51,7 +51,7 @@ router.post("/reservations", function(req, res){
 				}
 				else{
 					console.log("Something went wrong! :(");
-					res.render("reservations/new.ejs", {rooms: json, oldValues: oldValues, error: response1.body.message});
+					res.render("reservations/new.ejs", {rooms: json, oldValues: oldValues, error: "The conference room is already occupied."});
 				}
 			});
 		}

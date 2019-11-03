@@ -29,12 +29,14 @@ router.get("/users", function(req, res){
 
 router.post("/users", function(req, res){
 	request.post(postNewUserUrl, {json: req.body}, function(err, response, body){
-		if(err){
-			console.log("Something went wrong! :(");
-		}
-		else{
+		if(!err && response.statusCode === 200){
 			console.log("User post done!");
 			res.redirect("/users");
+		}
+		else{
+			console.log("Something went wrong! :(");
+			console.log(response.body);
+			res.render("users/new.ejs", {oldValues: req.body, error: "Username is already used!"});
 		}
 	});
 });
