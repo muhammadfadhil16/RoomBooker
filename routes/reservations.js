@@ -25,6 +25,10 @@ router.get("/reservations", function(req, res){
 			res.send("Something went wrong! :(");
 		}
 		else{
+			json.forEach(function(reservation){
+				reservation.start = reservation.start.split("T").join(" ").split("+")[0].slice(0, -3);
+				reservation.end = reservation.end.split("T").join(" ").split("+")[0].slice(0, -3);
+			});
 			res.render("reservations/index.ejs", {reservations: json});		}
 	});	
 });
@@ -40,8 +44,8 @@ router.post("/reservations", function(req, res){
 			req.body.roomId = json.find(function(room){
 				return room.name === req.body.roomId;
 			}).roomId;
-			req.body.start = req.body.start.split(" ").join("T" ).replace(/\//g, "-") + ":00+00:00";
-			req.body.end = req.body.end.split(" ").join("T").replace(/\//g, "-") + ":00+00:00";
+			req.body.start = req.body.start.split(" ").join("T" ).replace(/\//g, "-") + ":00+01:00";
+			req.body.end = req.body.end.split(" ").join("T").replace(/\//g, "-") + ":00+01:00";
 
 			request.post(postNewReservationUrl, {json: req.body}, function(err1, response1, body1){
 
