@@ -1,5 +1,75 @@
-body {
-    background-color: burlywood;
-    color: red;
+body, html {
+    height: 100%;
+  }
+
+
+.bg {
+    background-image: url("confRoom3.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+.mainPage{
+    background-image: linear-gradient(to right,rgb(200, 202, 207) , rgb(70, 71, 74));
+    height: 94.2%;
+    
+}
+
+.errorMessage{
+    margin: 0;
+
+}
+
+.title{
+    text-align: center;
+}
+
+
+#addUser{
+    float: right;
+}
+
+.topButtons{
+    margin-bottom: 2%;
+}
+
+#searchInput{
+    padding: 10px 10px;
+    line-height: 10px;
+    font-size: large;
+}
+
+#formUser{
+    width: 100%;
+}
+
+.userData{
+    display: flex;
+}
+
+.userData .form-group input{
+    width: 75%;
+
+}
+
+.userData .form-group {
+    width: 100%;
+
+}
+
+.userData h3{
+    width: 36%;
+    margin-left: 2.5%;
+}
+
+.formUserButtons{
+    width: 50%;
+    margin-left: 30%;
+    margin-right: auto;
+}
+
+#backButton{
+    margin-bottom: 2%;
+}

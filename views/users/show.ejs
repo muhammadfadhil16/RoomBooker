@@ -1,14 +1,72 @@
 <% include ../partials/header %> 
 
-<div class="container">
-    <h1>Show page</h1>
-    <div class="row">
-        <div>
-            <%= user.name %>
-            <a href="/users">Go back...</a>
-        </div>
-    </div>
-</div>
+
+<h1>Show page</h1>
+<hr>
+
+<a href="/users" class="btn btn-dark" id="backButton">&lt&lt Back</a>
+
+<table class="table table-striped table-dark">
+  <tbody>
+    <tr>
+      <th scope="row">Username:</th>
+      <td><%= user.username %></td>
+    </tr>
+    <tr>
+      <th scope="row">Name:</th>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Surname:</th>
+      <td><%= user.surname %></td>
+    </tr>
+    <tr class="table-dark">
+      <th scope="row"></th>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Country:</th>
+      <td><%= user.userAddress.country %></td>
+    </tr>
+    <tr>
+      <th scope="row">City:</th>
+      <td><%= user.userAddress.city %></td>
+    </tr>
+    <tr>
+      <th scope="row">Street:</th>
+      <td><%= user.userAddress.street %></td>
+    </tr>
+    <tr>
+      <th scope="row">House number:</th>
+      <td><%= user.userAddress.number %></td>
+    </tr>
+    <tr class="table-dark">
+      <th scope="row"></th>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Email:</th>
+      <td><%= user.userContact.email %></td>
+    </tr>
+    <tr>
+      <th scope="row">Phone number:</th>
+      <td><%= user.userContact.phoneNumber %></td>
+    </tr>
+    <tr class="table-dark">
+      <th scope="row"></th>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Company:</th>
+      <td><%= user.company.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Job title:</th>
+      <td><%= user.jobTitle.jobName %></td>
+    </tr>
+  </tbody>
+</table>
+
 
     
 

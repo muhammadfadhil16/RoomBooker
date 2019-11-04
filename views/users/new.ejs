@@ -1,59 +1,57 @@
 <% include ../partials/header %> 
 
 
-<div class="container">
-    <h1>Create new user!</h1>
-    <div class="row">
-        <div>
-            <form action="/users" method="POST">
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username%><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="name" placeholder="name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.name %><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="surname" placeholder="surname" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.surname %><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="password" name="password" placeholder="password">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="street" placeholder="street" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.street %><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="houseNumber" placeholder="house number" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.houseNumber %><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="city" placeholder="city" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.city %><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="country" placeholder="country" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.country %><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="email" name="email" placeholder="email" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.email %><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="tel" pattern="[0-9]{9}" maxlength="9" name="phoneNumber" placeholder="phone number" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.phoneNumber %><% } %>">
-                </div>
-                <h1>Job</h1>
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="companyName" placeholder="company name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.companyName %><% } %>">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" required type="text" name="jobTitleName" placeholder="job title" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.jobTitleName %><% } %>">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">
-                        Create user!
-                    </button>
-                    <input class="form-control" type="reset">
-                </div>
-            </form>
-            <a href="/rooms">Go back...</a>
+<h1 class="title">Create new user!</h1>
+<hr>
+<a href="/users" class="btn btn-dark" id="backButton">&lt&lt Back</a>
+
+<div class="row">
+    <form action="/users" method="POST" id="formUser">
+        <div class="userData">
+            <h3>User data:</h3>
+            <div class="form-group">
+                <input class="form-control" autocomplete="off" required type="text" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username%><% } %>">
+                <input class="form-control" autocomplete="off" required type="text" name="name" placeholder="name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.name %><% } %>">
+                <input class="form-control" autocomplete="off" required type="text" name="surname" placeholder="surname" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.surname %><% } %>">
+                <input class="form-control" autocomplete="off" required type="password" name="password" placeholder="password">
+            </div>
         </div>
-    </div>
+        <hr>
+        <div class="userData">
+            <h3>Address:</h3>
+            <div class="form-group">
+                <input class="form-control" autocomplete="off" required type="text" name="street" placeholder="street" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.street %><% } %>">
+                <input class="form-control" autocomplete="off" required type="text" name="houseNumber" placeholder="house number" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.houseNumber %><% } %>">
+                <input class="form-control" autocomplete="off" required type="text" name="city" placeholder="city" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.city %><% } %>">
+                <input class="form-control" autocomplete="off" required type="text" name="country" placeholder="country" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.country %><% } %>">
+            </div>
+        </div>
+        <hr>
+        <div class="userData">
+            <h3>Contact:</h3>
+            <div class="form-group">
+                <input class="form-control" autocomplete="off" required type="email" name="email" placeholder="email" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.email %><% } %>">
+                <input class="form-control" autocomplete="off" required type="tel" pattern="[0-9]{9}" maxlength="9" name="phoneNumber" placeholder="phone number" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.phoneNumber %><% } %>">
+            </div>
+        </div>
+        <hr>
+        <div class="userData">
+            <h3>Job:</h3>
+            <div class="form-group">
+                <input class="form-control" autocomplete="off" required type="text" name="companyName" placeholder="company name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.companyName %><% } %>">
+                <input class="form-control" autocomplete="off" required type="text" name="jobTitleName" placeholder="job title" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.jobTitleName %><% } %>">
+            </div>
+        </div>
+
+        <div class="form-group formUserButtons">
+            <button class="btn btn-lg btn-primary btn-block">
+                Create user!
+            </button>
+            <input class="form-control" type="reset" id="reset">
+        </div>
+    </form>
 </div>
+
 
 
 <% include ../partials/footer %> 

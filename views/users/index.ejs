@@ -1,35 +1,39 @@
 <% include ../partials/header %> 
 
-<h1>Whole rooms you can book</h1>
+<h1 class="title">Choose room you want to book</h1>
+<hr>
 
-<input id="searchInput" type="text" placeholder="Search..">
-
-<a href="/users/new" class="btn btn-primary">Add user</a>
-<a class="btn btn-primary">Delete user</a>
-
-<div class="container" id="myTable">
-    <% users.forEach(function(user){ %>
-        <div class="row">
-            <div class="col">
-                <%= user.name %>
-            </div>
-            <div class="col">
-                <%= user.surname %>
-            </div>
-            <div class="col">
-                <%= user.userContact.email %>
-            </div>
-            <div class="col">
-                <%= user.company.name %>
-            </div>  
-            <div class="col">
-                <a class="btn btn-success" href="/users/<%= user.id %>">See details</a>
-            </div>  
-        </div>    
-    <% }); %>
+<div class="topButtons">
+    <input id="searchInput" type="text" placeholder="Search..">
+    <a href="/users/new" class="btn btn-dark" id="addUser">Add user</a>
 </div>
 
+<table class="table" id="myTable">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Company</th>
+        <th scope="col">Job title</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        <% i = 1 %>
+        <% users.forEach(function(user){ %>
+            <tr>
+                <th scope="row"><%= i %></th>
+                <td><%= user.name %></td>
+                <td><%= user.surname %></td>
+                <td><%= user.company.name %></td>
+                <td><%= user.jobTitle.jobName %></td>
+                <td><a class="btn btn-success" href="/users/<%= user.id %>">See details</a></td>
+            </tr>
+        <% i++; %>
+        <% }); %>
+    </tbody>
+</table>
+
     
-
-
 <% include ../partials/footer %> 
