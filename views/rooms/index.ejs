@@ -1,36 +1,42 @@
 <% include ../partials/header %> 
 
 
-<h1>Whole rooms you can book</h1>
+<h1 class="title">List of rooms</h1>
+<hr>
 
-<input id="searchInput" type="text" placeholder="Search..">
-
-<a href="/rooms/new" class="btn btn-primary">Add room</a>
-<a class="btn btn-primary">Delete room</a>
-
-<div class="container" id="myTable">
-    <% rooms.forEach(function(room){ %>
-        <div class="row">
-            <div class="col">
-                <%= room.name %>
-            </div>
-            <div class="col">
-                <%= room.roomSize %>
-            </div>
-            <div class="col">
-                <%= room.roomLocation.floor %>
-            </div>
-            <div class="col">
-                <%= room.roomLocation.sector %>
-            </div>  
-            <div class="col">
-                <a class="btn btn-success" href="/rooms/<%= room.roomId %>">See details</a>
-            </div>  
-        </div>    
-    <% }); %>
+<div class="topButtons">
+    <input id="searchInput" type="text" placeholder="Search..">
+    <a href="/rooms/new" class="btn btn-dark" id="addUser">Add room</a>
 </div>
 
-    
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table" id="myTable">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Floor</th>
+            <th scope="col">Sector</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <% i = 1 %>
+            <% rooms.forEach(function(room){ %>
+                <tr>
+                    <th scope="row"><%= i %></th>
+                    <td><%= room.name %></td>
+                    <td><%= room.roomSize %></td>
+                    <td><%= room.roomLocation.floor %></td>
+                    <td><%= room.roomLocation.sector %></td>
+                    <td><a class="btn btn-success" href="/rooms/<%= room.roomId %>">See details</a></td>
+                </tr>
+            <% i++; %>
+            <% }); %>
+        </tbody>
+    </table>
+</div>     
 
 
 <% include ../partials/footer %> 
