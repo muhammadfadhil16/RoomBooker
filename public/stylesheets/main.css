@@ -31,6 +31,7 @@ body, html {
 
 #addUser{
     float: right;
+    display: inline-block;
 }
 
 .topButtons{
@@ -41,6 +42,8 @@ body, html {
     padding: 10px 10px;
     line-height: 10px;
     font-size: large;
+    width: 30%;
+    display: inline-block;
 }
 
 #formUser{
