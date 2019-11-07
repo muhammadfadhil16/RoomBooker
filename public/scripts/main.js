@@ -1,4 +1,5 @@
-jQuery('#datetimepicker').datetimepicker();
+jQuery('#datetimepickerStart').datetimepicker();
+jQuery('#datetimepickerEnd').datetimepicker();
 
 $(document).ready(function(){
     $("#searchInput").on("keyup", function() {

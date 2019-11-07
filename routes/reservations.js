@@ -54,8 +54,12 @@ router.post("/reservations", function(req, res){
 					res.redirect("/reservations");
 				}
 				else{
+					if(response1.body.message === "No value present"){
+						error = "Wrong username or password";
+					}
+					else error = response1.body.message;
 					console.log("Something went wrong! :(");
-					res.render("reservations/new.ejs", {rooms: json, oldValues: oldValues, error: "The conference room is already occupied."});
+					res.render("reservations/new.ejs", {rooms: json, oldValues: oldValues, error: error});
 				}
 			});
 		}

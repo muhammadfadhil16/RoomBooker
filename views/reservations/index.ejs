@@ -1,37 +1,46 @@
 <% include ../partials/header %> 
 
-<h1 >Whole reservations</h1>
 
-<input id="searchInput" type="text" placeholder="Search..">
-<select id="typeReservation">
-    <option value="All">All</option>
-    <option value="Incoming">Incoming</option>
-</select>
+<h1 class="title">List of reservations</h1>
+<hr>
 
-<a href="/reservations/new" class="btn btn-primary">Add reservation</a>
-<a class="btn btn-primary">Delete room</a>
-
-<div class="container" id="myTable">
-    <% reservations.forEach(function(reservation){ %>
-        <div class="row visible">
-            <div class="col">
-                <%= reservation.topic.topicName %>
-            </div>
-            <div class="col">
-                <%= reservation.username %>
-            </div>
-            <div class="col">
-                <%= reservation.start %>
-            </div>
-            <div class="col" id="end">
-                <%= reservation.end %>
-            </div>
-            <div class="col">
-                <a class="btn btn-success" href="/reservations/<%= reservation.reservationId %>">See details</a>
-            </div>  
-        </div>    
-    <% }); %>
+<div class="topButtons">
+    <input class="form-control" id="searchInput" type="text" placeholder="Search..">
+    <select class="browser-default custom-select custom-select-md mb-3" id="typeReservation">
+        <option value="All">All</option>
+        <option value="Incoming">Incoming</option>
+    </select>
+    <a href="/reservations/new" class="btn btn-dark" id="addUser">Create reservation</a>
 </div>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table" id="myTable">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
+            <th scope="col">Topic</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <% i = 1 %>
+            <% reservations.forEach(function(reservation){ %>
+                <tr>
+                    <th scope="row"><%= i %></th>
+                    <td><%= reservation.username %></td>
+                    <td><%= reservation.start %></td>
+                    <td><%= reservation.end %></td>
+                    <td><%= reservation.topic.topicName %></td>
+                    <td><a class="btn btn-success" href="/reservations/<%= reservation.reservationId %>">See details</a></td>
+                </tr>
+            <% i++; %>
+            <% }); %>
+        </tbody>
+    </table>
+</div> 
 
     
 

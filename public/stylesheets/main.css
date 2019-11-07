@@ -30,23 +30,32 @@ body, html {
 
 
 #addUser{
+    display: inline;
     float: right;
-    display: inline-block;
 }
 
 .topButtons{
-    margin-bottom: 2%;
+    height: 50px;
 }
 
 #searchInput{
-    padding: 10px 10px;
-    line-height: 10px;
-    font-size: large;
     width: 30%;
-    display: inline-block;
+    display: inline;
+    float: left;
+}
+
+#typeReservation{
+    width: 15%;
+    display: inline;
+    margin-left: 2.5%;
+    margin-bottom: 0 !important;
 }
 
 #formUser{
+    width: 90%;
+}
+
+#formRoom{
     width: 100%;
 }
 
@@ -54,14 +63,13 @@ body, html {
     display: flex;
 }
 
-.userData .form-group input{
-    width: 75%;
-
+.userData .form-group input, .userData .form-group select{
+    width: 70%;
 }
 
 .userData .form-group {
     width: 100%;
-
+    margin-left: 5%;
 }
 
 .userData h3{
@@ -71,7 +79,7 @@ body, html {
 
 .formUserButtons{
     width: 50%;
-    margin-left: 30%;
+    margin-left: 31%;
     margin-right: auto;
 }
 
@@ -91,7 +99,15 @@ body, html {
 }
 
 .roomForm{
+    width: 100%;
+}
+
+.roomForm .form-group, .roomForm button, .roomForm #reset{
     margin-left: auto;
     margin-right: auto;
     width: 60%;
+}
+
+#usernameRes{
+    margin-bottom: 3%;
 }
