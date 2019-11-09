@@ -14,25 +14,25 @@
 </div>
 
 <div class="table-wrapper-scroll-y my-custom-scrollbar">
-    <table class="table" id="myTable">
+    <table class="table" id="reservationsTable">
         <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Owner</th>
-            <th scope="col">Start</th>
-            <th scope="col">End</th>
-            <th scope="col">Topic</th>
-            <th scope="col"></th>
-        </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Start</th>
+                <th scope="col">End</th>
+                <th scope="col">Topic</th>
+                <th scope="col"></th>
+            </tr>
         </thead>
         <tbody>
             <% i = 1 %>
             <% reservations.forEach(function(reservation){ %>
-                <tr>
+                <tr class="visible">
                     <th scope="row"><%= i %></th>
                     <td><%= reservation.username %></td>
                     <td><%= reservation.start %></td>
-                    <td><%= reservation.end %></td>
+                    <td id="end"><%= reservation.end %></td>
                     <td><%= reservation.topic.topicName %></td>
                     <td><a class="btn btn-success" href="/reservations/<%= reservation.reservationId %>">See details</a></td>
                 </tr>

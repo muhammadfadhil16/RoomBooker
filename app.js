@@ -1,6 +1,7 @@
 var express = require("express"),
 	app = express(),
 	bodyParser = require("body-parser"),
+	methodOverride = require("method-override"),
 	indexRoutes = require("./routes/index"),
 	roomsRoutes = require("./routes/rooms"),
 	reservationsRoutes = require("./routes/reservations"),
@@ -10,6 +11,7 @@ var express = require("express"),
 //settings
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 
 //include routes

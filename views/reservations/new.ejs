@@ -11,7 +11,7 @@
             <h3>User:</h3>
             <div class="form-group">
                 <input class="form-control" maxlength="15" autocomplete="off" required type="text" id="usernameRes" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username %><% } %>">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="password" placeholder="password" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.password %><% } %>">
+                <input class="form-control" maxlength="15" autocomplete="off" required type="password" name="password" placeholder="password" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.password %><% } %>">
             </div>
         </div>
         <hr>
@@ -29,7 +29,7 @@
         <div class="userData">
             <h3>Topic:</h3>
             <div class="form-group">
-                <input class="form-control" maxlength="20" autocomplete="off" required type="email" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic %><% } %>">
+                <input class="form-control" maxlength="20" autocomplete="off" required type="text" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic %><% } %>">
             </div>
         </div>
         <hr>

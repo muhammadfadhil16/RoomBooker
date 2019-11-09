@@ -5,17 +5,18 @@ var express = require("express"),
 
 //API URLs	
 var getAllRoomsUrl = {
-	url: "http://localhost:8080/rooms",
-	json: true
+		url: "http://localhost:8080/rooms",
+		json: true
 	},
 	getAllReservationsUrl = {
-	url: "http://localhost:8080/reservations",
-	json: true
+		url: "http://localhost:8080/reservations",
+		json: true
 	},
 	getReservationById = {
-	url: "http://localhost:8080/reservations/",
-	json: true
-	}
+		url: "http://localhost:8080/reservations/",
+		json: true
+	},
+	deleteReservationUrl = "http://localhost:8080/reservations/",
 	postNewReservationUrl = "http://localhost:8080/reservations";
 
 
@@ -77,6 +78,38 @@ router.get("/reservations/new", function(req, res){
 	});
 });
 
+router.delete("/reservations/:id", function(req, res){
+	var tempUrl = deleteReservationUrl + req.params.id;
+
+    request.delete(tempUrl, {json: req.body}, function(err, response, body){
+		if(!err && response.statusCode === 200){
+			console.log("Deletion done!");
+			res.redirect("/reservations");
+		}
+		else{
+			console.log("Something went wrong! :(");
+
+			var tempUrl = Object.assign({}, getReservationById);
+			tempUrl.url = tempUrl.url + req.params.id;
+			
+			request(tempUrl, function(err2, response2, json2){
+				if(err2){
+					res.send("Something went wrong! :(");
+				}
+				else{
+					request(getAllRoomsUrl, function(err1, response1, json1){
+						if(err1){
+							res.send("Something went wrong! :(");
+						}
+						else{
+							res.render("reservations/show.ejs", {reservation: json2, rooms: json1, error: "Wrong username or password!"});		
+						}
+					});
+				}
+			});	
+		}
+	});
+});
 
 router.get("/reservations/:id", function(req, res){
 	var tempUrl = Object.assign({}, getReservationById);
@@ -87,7 +120,14 @@ router.get("/reservations/:id", function(req, res){
 			res.send("Something went wrong! :(");
 		}
 		else{
-			res.render("reservations/show.ejs", {reservation: json});
+			request(getAllRoomsUrl, function(err1, response1, json1){
+				if(err1){
+					res.send("Something went wrong! :(");
+				}
+				else{
+					res.render("reservations/show.ejs", {reservation: json, rooms: json1});		
+				}
+			});
 		}
 	});
 });

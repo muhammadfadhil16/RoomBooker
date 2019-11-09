@@ -87,6 +87,17 @@ body, html {
     margin-bottom: 2%;
 }
 
+#modifyButton{
+    margin-bottom: 2%;
+    float: right;
+}
+
+#deleteButton{
+    margin-bottom: 2%;
+    margin-left: 2%;
+    float: right;
+}
+
 .my-custom-scrollbar {
     position: relative;
     height: 50%;
@@ -110,4 +121,8 @@ body, html {
 
 #usernameRes{
     margin-bottom: 3%;
+}
+
+.modal-body button{
+    margin-top: 6%;
 }

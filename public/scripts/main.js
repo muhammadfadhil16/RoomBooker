@@ -1,10 +1,12 @@
 jQuery('#datetimepickerStart').datetimepicker();
 jQuery('#datetimepickerEnd').datetimepicker();
 
+
+//search for reservations
 $(document).ready(function(){
     $("#searchInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
-      $("#myTable .row").filter(function() {
+      $("#reservationsTable tbody tr").filter(function() {
         if($(this).hasClass("visible")){
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         }
@@ -12,24 +14,28 @@ $(document).ready(function(){
     });
 });
 
+
+//type of reservations
 $(document).ready(function(){
   $("#typeReservation").change(function(){
       var type = $(this).val();
       var currentDate = new Date();
 
       if(type === "Incoming"){
-        $("#myTable .row").filter(function(){
+        $("#reservationsTable tbody tr").filter(function(){
           if(new Date($("#end", this).text()) < currentDate){
             $(this).hide().removeClass("visible");
           }
         });
       }
       else if(type === "All"){
-        $("#myTable .row").show().addClass("visible");
+        $("#reservationsTable tbody tr").show().addClass("visible");
       }
   });
 });
 
+
+//search for users/rooms
 $(document).ready(function(){
   $("#searchInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -39,6 +45,7 @@ $(document).ready(function(){
   });
 });
 
+//reset button
 $(document).ready(function(){
   $("#reset").click(function(){
     $("input").not(":input[type=button], :input[type=submit], :input[type=reset]").val("");
