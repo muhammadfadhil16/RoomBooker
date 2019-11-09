@@ -8,7 +8,7 @@
 <div class="row">
     <form action="/reservations/<%= reservation.reservationId %>" method="POST" id="formUser">
         <div class="userData">
-            <h3>User:</h3>
+            <h3>Sign in to confirm:</h3>
             <div class="form-group">
                 <input class="form-control" maxlength="15" autocomplete="off" required type="text" id="usernameRes" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username %><% } %>">
                 <input class="form-control" maxlength="15" autocomplete="off" required type="password" name="password" placeholder="password" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.password %><% } %>">
@@ -17,10 +17,11 @@
         <hr>
         <div class="userData">
             <h3>Room:</h3>
-            <div class="form-group">
-                <select multiple class="form-control" required name="roomId" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.roomId %><% } %>">
+            <div class="form-group"> 
+                <% if(typeof oldValues !== "undefined" && typeof rooms !== "undefined"){ %><% selectedRoom = rooms.find(function(room){return room.roomId === oldValues.roomId;}).name;%><% } %>      
+                <select multiple class="form-control" required name="roomId">
                     <% rooms.forEach(function(room){ %>
-                        <option><%= room.name %></option>
+                        <option <% if(typeof selectedRoom !== "undefined" && selectedRoom === room.name){ %><%= "selected" %><% } %>><%= room.name %></option>
                     <% }); %>
                 </select>
             </div>

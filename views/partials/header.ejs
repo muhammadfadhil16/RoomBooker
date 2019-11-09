@@ -56,7 +56,9 @@
     </div>
 </nav>
 
-<h1 class="errorMessage alert-danger"><% if(typeof error !== "undefined"){ %><%= error %><% } %></h1>
+<div class="errorMessage alert-danger"><% if(typeof error !== "undefined"){ %><%= error; %><% } %></div>
+<% error = undefined; %>
+
 <div class="bg">
 <div class="container mainPage">
 

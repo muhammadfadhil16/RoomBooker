@@ -1,5 +1,10 @@
-jQuery('#datetimepickerStart').datetimepicker();
-jQuery('#datetimepickerEnd').datetimepicker();
+//start datetimepicker
+jQuery('#datetimepickerStart').datetimepicker({
+  step: 30
+});
+jQuery('#datetimepickerEnd').datetimepicker({
+  step: 30
+});
 
 
 //search for reservations
@@ -50,4 +55,8 @@ $(document).ready(function(){
   $("#reset").click(function(){
     $("input").not(":input[type=button], :input[type=submit], :input[type=reset]").val("");
   });
+});
+
+$(document).ready(function(){
+  $(".errorMessage").delay(5000).fadeOut(10);
 });

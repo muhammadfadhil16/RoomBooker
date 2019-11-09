@@ -18,9 +18,9 @@
         <div class="userData">
             <h3>Room:</h3>
             <div class="form-group">
-                <select multiple class="form-control" required name="roomId" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.roomId %><% } %>">
+                <select multiple class="form-control" required name="roomId">
                     <% rooms.forEach(function(room){ %>
-                        <option><%= room.name %></option>
+                        <option <% if(typeof oldValues !== "undefined" && oldValues.roomId === room.name){ %><%= "selected" %><% } %>><%= room.name %></option>
                     <% }); %>
                 </select>
             </div>
