@@ -5,18 +5,19 @@ body, html {
 
 
 .bg {
-    background-image: url("confRoom3.jpg");
+    background-image: url("images/confRoom3.jpg");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
+    box-shadow: inset 0px 0px 400px 40px rgb(70, 71, 74);
 }
 
 .mainPage{
     background-image: linear-gradient(to right,rgb(200, 202, 207) , rgb(70, 71, 74));
     background-size: auto;
-    height: 100%;
-    
+    height: 100%;   
+    box-shadow: inset 0px 0px 40px 4px rgb(70, 71, 74);
 }
 
 .errorMessage{
@@ -126,4 +127,28 @@ body, html {
 
 .modal-body button{
     margin-top: 6%;
+}
+
+.form-control:not([type="button"]){
+    background-color: rgb(230, 230, 230);
+}
+
+.form-control{
+    margin-bottom: 0.5%;
+}
+
+.form-control:focus {   
+    border-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.6);
+    outline: 0 none;
+}
+
+select option::selection{
+    background: black;
+    color: black;
+}
+
+
+select option:checked{
+    background: linear-gradient(black, black);
 }
