@@ -16,6 +16,7 @@ var getAllRoomsUrl = {
 		url: "http://localhost:8080/reservations/",
 		json: true
 	},
+	updateReservationUrl = "http://localhost:8080/reservations/",
 	deleteReservationUrl = "http://localhost:8080/reservations/",
 	postNewReservationUrl = "http://localhost:8080/reservations";
 
@@ -78,6 +79,29 @@ router.get("/reservations/new", function(req, res){
 	});
 });
 
+
+router.get("/reservations/:id", function(req, res){
+	var tempUrl = Object.assign({}, getReservationById);
+	tempUrl.url = tempUrl.url + req.params.id;
+	
+	request(tempUrl, function(err, response, json){
+		if(err){
+			res.send("Something went wrong! :(");
+		}
+		else{
+			request(getAllRoomsUrl, function(err1, response1, json1){
+				if(err1){
+					res.send("Something went wrong! :(");
+				}
+				else{
+					res.render("reservations/show.ejs", {reservation: json, rooms: json1});		
+				}
+			});
+		}
+	});
+});
+
+
 router.delete("/reservations/:id", function(req, res){
 	var tempUrl = deleteReservationUrl + req.params.id;
 
@@ -111,7 +135,8 @@ router.delete("/reservations/:id", function(req, res){
 	});
 });
 
-router.get("/reservations/:id", function(req, res){
+
+router.get("/reservations/:id/edit", function(req, res){
 	var tempUrl = Object.assign({}, getReservationById);
 	tempUrl.url = tempUrl.url + req.params.id;
 	
@@ -125,11 +150,47 @@ router.get("/reservations/:id", function(req, res){
 					res.send("Something went wrong! :(");
 				}
 				else{
-					res.render("reservations/show.ejs", {reservation: json, rooms: json1});		
+					res.render("reservations/edit.ejs", {reservation: json, oldValues: json, rooms: json1});		
 				}
 			});
 		}
 	});
+});
+
+
+router.post("/reservations/:id", function(req, res){
+	var tempUrl = updateReservationUrl + req.params.id;
+
+	request(getAllRoomsUrl, function(err, response, json){
+		if(err){
+			res.send("Something went wrong! :(");
+		}
+		else{
+			req.body.roomId = json.find(function(room){
+				return room.name === req.body.roomId;
+			}).roomId;
+			req.body.start = req.body.start.split(" ").join("T" ).replace(/\//g, "-") + ":00+01:00";
+			req.body.end = req.body.end.split(" ").join("T").replace(/\//g, "-") + ":00+01:00";
+
+			request.post(tempUrl, {json: req.body}, function(err1, response1, body1){
+
+				if(!err1 && response1.statusCode === 200){
+					console.log("Reservation update done!");
+					res.redirect("/reservations/" + req.params.id);
+				}
+				else{
+					if(response1.body.message === "No value present"){
+						error = "Wrong username or password";
+					}
+					else error = response1.body.message;
+					console.log("Something went wrong! :(");
+					res.render("reservations/edit.ejs", {rooms: json, oldValues: req.body, error: error});
+				}
+			});
+		}
+	});
+	
+    
 });
 
 module.exports = router;
