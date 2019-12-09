@@ -10,7 +10,7 @@
         <div class="userData">
             <h3>Sign in to confirm:</h3>
             <div class="form-group">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" id="usernameRes" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username %><% } %>">
+                <input class="form-control" pattern="[0-9]*[a-zA-Z]+[a-zA-Z0-9]*" oninvalid="this.setCustomValidity('Username may contain only letters and numbers without spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" id="usernameRes" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username %><% } %>">
                 <input class="form-control" maxlength="15" autocomplete="off" required type="password" name="password" placeholder="password" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.password %><% } %>">
             </div>
         </div>
@@ -30,21 +30,21 @@
         <div class="userData">
             <h3>Topic:</h3>
             <div class="form-group">
-                <input class="form-control" maxlength="20" autocomplete="off" required type="text" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic.topicName %><% } %>">
+                <input class="form-control" pattern="[0-9]*[a-zA-Z]+(\s[a-zA-Z0-9\\/]+)*" oninvalid="this.setCustomValidity('Topic may contain only letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="20" autocomplete="off" required type="text" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic.topicName %><% } %>">
             </div>
         </div>
         <hr>
         <div class="userData">
             <h3>Start date:</h3>
             <div class="form-group">
-                <input class="form-control" pattern="[1-9][0-9]{3}/(([0][1-9])|([1][0-2]))/[0-3][0-9] (([0-1][0-9])|([2][0-4])):[0-6][0-9]"autocomplete="off" id="datetimepickerStart" required type="text" name="start" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.start.split("T").join(" ").split("+")[0].slice(0, -3).replace("-", "/").replace("-", "/"); %><% } %>">
+                <input class="form-control" pattern="[1-9][0-9]{3}\/(([0][1-9])|([1][0-2]))\/(([0-2][0-9])|([3][0-1])) (([0-1][0-9])|([2][0-4])):(([0-5][0-9])|([6][9]))" oninvalid="this.setCustomValidity('Date format: yyyy/mm/dd hh:mm')" oninput="this.setCustomValidity('')" autocomplete="off" id="datetimepickerStart" required type="text" placeholder = "Date format: yyyy/mm/dd hh:mm" name="start" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.start.split("T").join(" ").split("+")[0].slice(0, -3).replace("-", "/").replace("-", "/"); %><% } %>">
             </div>
         </div>
         <hr>
         <div class="userData">
             <h3>End date:</h3>
             <div class="form-group">
-                <input class="form-control" autocomplete="off" id="datetimepickerEnd" required type="text" name="end" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.end.split("T").join(" ").split("+")[0].slice(0, -3).replace("-", "/").replace("-", "/"); %><% } %>">
+                <input class="form-control" pattern="[1-9][0-9]{3}\/(([0][1-9])|([1][0-2]))\/(([0-2][0-9])|([3][0-1])) (([0-1][0-9])|([2][0-4])):(([0-5][0-9])|([6][9]))" oninvalid="this.setCustomValidity('Date format: yyyy/mm/dd hh:mm')" oninput="this.setCustomValidity('')" autocomplete="off" id="datetimepickerEnd" required type="text" placeholder="yyyy/mm/dd hh:mm" name="end" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.end.split("T").join(" ").split("+")[0].slice(0, -3).replace("-", "/").replace("-", "/"); %><% } %>">
             </div>
         </div>
 
