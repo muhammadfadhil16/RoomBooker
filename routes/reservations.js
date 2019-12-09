@@ -31,7 +31,7 @@ router.get("/reservations", function(req, res){
 				reservation.start = reservation.start.split("T").join(" ").split("+")[0].slice(0, -3);
 				reservation.end = reservation.end.split("T").join(" ").split("+")[0].slice(0, -3);
 			});
-			res.render("reservations/index.ejs", {reservations: json});		}
+			res.render("reservations/index.ejs", {reservations: json, error: undefined});		}
 	});	
 });
 
@@ -75,7 +75,7 @@ router.get("/reservations/new", function(req, res){
 			res.send("Something went wrong! :(");
 		}
 		else{
-			res.render("reservations/new.ejs", {rooms: json});		}
+			res.render("reservations/new.ejs", {rooms: json, error: undefined});		}
 	});
 });
 
@@ -94,7 +94,7 @@ router.get("/reservations/:id", function(req, res){
 					res.send("Something went wrong! :(");
 				}
 				else{
-					res.render("reservations/show.ejs", {reservation: json, rooms: json1});		
+					res.render("reservations/show.ejs", {reservation: json, rooms: json1, error: undefined});		
 				}
 			});
 		}
@@ -150,7 +150,7 @@ router.get("/reservations/:id/edit", function(req, res){
 					res.send("Something went wrong! :(");
 				}
 				else{
-					res.render("reservations/edit.ejs", {reservation: json, oldValues: json, rooms: json1});		
+					res.render("reservations/edit.ejs", {reservation: json, oldValues: json, rooms: json1, error: undefined});		
 				}
 			});
 		}
@@ -184,8 +184,18 @@ router.post("/reservations/:id", function(req, res){
 					}
 					else error = response1.body.message;
 					console.log("Something went wrong! :(");
-					res.render("reservations/edit.ejs", {rooms: json, oldValues: req.body, error: error});
-				}
+
+					var tempUrl = Object.assign({}, getReservationById);
+					tempUrl.url = tempUrl.url + req.params.id;
+					request(tempUrl, function(err2, response2, json2){
+						if(err){
+							res.send("Something went wrong! :(");
+						}
+						else{
+							res.render("reservations/edit.ejs", {rooms: json, reservation: json2, oldValues: json2, error: error});
+						}
+					});
+				}		
 			});
 		}
 	});

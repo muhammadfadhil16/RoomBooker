@@ -10,9 +10,9 @@
         <div class="userData">
             <h3>User data:</h3>
             <div class="form-group">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username%><% } %>">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="name" placeholder="name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.name %><% } %>">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="surname" placeholder="surname" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.surname %><% } %>">
+                <input class="form-control" pattern="[0-9]*[a-zA-Z]+[a-zA-Z0-9]*" oninvalid="this.setCustomValidity('Username must contain only numbers and letters without spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username%><% } %>">
+                <input class="form-control" pattern="[a-zA-Z]+" oninvalid="this.setCustomValidity('Name must contain only letters without spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="name" placeholder="name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.name %><% } %>">
+                <input class="form-control" pattern="[a-zA-Z]+" oninvalid="this.setCustomValidity('Surname must contain only letters without spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="surname" placeholder="surname" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.surname %><% } %>">
                 <input class="form-control" autocomplete="off" required type="password" name="password" placeholder="password">
             </div>
         </div>
@@ -20,10 +20,10 @@
         <div class="userData">
             <h3>Address:</h3>
             <div class="form-group">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="street" placeholder="street" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.street %><% } %>">
-                <input class="form-control" maxlength="10" autocomplete="off" required type="text" name="houseNumber" placeholder="house number" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.houseNumber %><% } %>">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="city" placeholder="city" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.city %><% } %>">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="country" placeholder="country" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.country %><% } %>">
+                <input class="form-control" pattern="[a-zA-Z0-9]+(\s[a-zA-Z0-9\\/]?)*" oninvalid="this.setCustomValidity('Street may contain letters, numbers, spaces and slashes.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="street" placeholder="street" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.street %><% } %>">
+                <input class="form-control" pattern="[0-9]+(\s[0-9])*"maxlength="10" oninvalid="this.setCustomValidity('House number must contain only numbers with spacing.')" oninput="this.setCustomValidity('')" autocomplete="off" required type="text" name="houseNumber" placeholder="house number" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.houseNumber %><% } %>">
+                <input class="form-control" pattern="[a-zA-Z0-9]+(\s[a-zA-Z0-9])*" oninvalid="this.setCustomValidity('City may contain letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="city" placeholder="city" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.city %><% } %>">
+                <input class="form-control" pattern="[a-zA-Z0-9]+(\s[a-zA-Z0-9])*" oninvalid="this.setCustomValidity('Country may contain letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="country" placeholder="country" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.country %><% } %>">
             </div>
         </div>
         <hr>
@@ -31,15 +31,15 @@
             <h3>Contact:</h3>
             <div class="form-group">
                 <input class="form-control" maxlength="20" autocomplete="off" required type="email" name="email" placeholder="email" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.email %><% } %>">
-                <input class="form-control" autocomplete="off" required type="tel" pattern="[0-9]{9}" maxlength="9" name="phoneNumber" placeholder="phone number" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.phoneNumber %><% } %>">
+                <input class="form-control" autocomplete="off" required type="tel" pattern="[0-9]{9}" oninvalid="this.setCustomValidity('Phone number must contain nine numbers without spacing.')" oninput="this.setCustomValidity('')" maxlength="9" name="phoneNumber" placeholder="phone number" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.phoneNumber %><% } %>">
             </div>
         </div>
         <hr>
         <div class="userData">
             <h3>Job:</h3>
             <div class="form-group">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="companyName" placeholder="company name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.companyName %><% } %>">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="jobTitleName" placeholder="job title" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.jobTitleName %><% } %>">
+                <input class="form-control" pattern="[0-9a-zA-Z]+(\s[a-zA-Z0-9])*" oninvalid="this.setCustomValidity('Company name may contain letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="companyName" placeholder="company name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.companyName %><% } %>">
+                <input class="form-control" pattern="[0-9a-zA-Z]+(\s[a-zA-Z0-9])*" oninvalid="this.setCustomValidity('Job title may contain letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="jobTitleName" placeholder="job title" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.jobTitleName %><% } %>">
             </div>
         </div>
 

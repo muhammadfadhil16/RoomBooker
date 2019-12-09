@@ -20,7 +20,7 @@ router.get("/rooms", function(req, res){
 			res.send("Something went wrong! :(");
 		}
 		else{
-			res.render("rooms/index.ejs", {rooms: json});	
+			res.render("rooms/index.ejs", {rooms: json, error: undefined});	
 		}
 	});
 });
@@ -50,7 +50,7 @@ router.get("/rooms/:id", function(req, res){
 			res.send("Something went wrong! :(");
 		}
 		else{
-			res.render("rooms/show.ejs", {room: json});
+			res.render("rooms/show.ejs", {room: json, error: undefined});
 		}
 	});
 });

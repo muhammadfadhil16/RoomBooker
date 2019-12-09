@@ -9,16 +9,16 @@
     <form action="/rooms" method="POST" id="formRoom">
         <div class="roomForm">
             <div class="form-group">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="name" placeholder="name">
+                <input class="form-control" pattern="[a-zA-Z0-9]+(\s[a-zA-Z0-9])*" oninvalid="this.setCustomValidity('Name may contain only letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="name" placeholder="name">
             </div>
             <div class="form-group">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="number" name="roomSize" placeholder="size">
+                <input class="form-control" pattern="[0-9]+" oninvalid="this.setCustomValidity('Size may contain only numbers without spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="number" name="roomSize" placeholder="size">
             </div>
             <div class="form-group">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="number" name="floor" placeholder="floor">
+                <input class="form-control" pattern="[a-zA-Z0-9]+(\s[a-zA-Z0-9])*" oninvalid="this.setCustomValidity('Floor may contain only letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="floor" placeholder="floor">
             </div>
             <div class="form-group">
-                <input class="form-control" maxlength="15" autocomplete="off" required type="text" name="sector" placeholder="sector">
+                <input class="form-control" pattern="[a-zA-Z0-9]+(\s[a-zA-Z0-9])*" oninvalid="this.setCustomValidity('Sector may contain only letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="15" autocomplete="off" required type="text" name="sector" placeholder="sector">
             </div>
         </div>
         <div class="form-group roomForm">

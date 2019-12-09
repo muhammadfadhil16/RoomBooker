@@ -21,7 +21,7 @@ router.get("/users", function(req, res){
 			res.send("Something went wrong! :(");
 		}
 		else{
-			res.render("users/index.ejs", {users: json});	
+			res.render("users/index.ejs", {users: json, error: undefined});	
 		}
 	});
 });
@@ -43,7 +43,7 @@ router.post("/users", function(req, res){
 
 
 router.get("/users/new", function(req, res){
-	res.render("users/new.ejs");
+	res.render("users/new.ejs", {error: undefined});
 });
 
 
@@ -56,7 +56,7 @@ router.get("/users/:id", function(req, res){
 			res.send("Something went wrong! :(");
 		}
 		else{
-			res.render("users/show.ejs", {user: json});
+			res.render("users/show.ejs", {user: json, error: undefined});
 		}
 	});
 });
