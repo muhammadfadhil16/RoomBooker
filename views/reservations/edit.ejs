@@ -10,7 +10,7 @@
         <div class="userData">
             <h3>Sign in to confirm:</h3>
             <div class="form-group">
-                <input class="form-control" pattern="[0-9]*[a-zA-Z]+[a-zA-Z0-9]*" oninvalid="this.setCustomValidity('Username may contain only letters and numbers without spacing.')" oninput="this.setCustomValidity('')" maxlength="50" autocomplete="off" required type="text" id="usernameRes" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username %><% } %>">
+                <input class="form-control" pattern="[0-9]*[a-zA-Z]+[_\-\.a-zA-Z0-9]*" oninvalid="this.setCustomValidity('Username may contain only numbers, letters, -, _, . without spacing.')" oninput="this.setCustomValidity('')" maxlength="50" autocomplete="off" required type="text" id="usernameRes" name="username" placeholder="username" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.username %><% } %>">
                 <input class="form-control" maxlength="15" autocomplete="off" required type="password" name="password" placeholder="password" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.password %><% } %>">
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="userData">
             <h3>Topic:</h3>
             <div class="form-group">
-                <input class="form-control" pattern="[0-9]*[a-zA-Z0-9]+(\s[a-zA-Z0-9\\/]+)*" oninvalid="this.setCustomValidity('Topic may contain only letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="50" autocomplete="off" required type="text" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic.topicName %><% } %>">
+                <input class="form-control" pattern="[0-9]*[a-zA-Z0-9\.\-_\\/]+(\s[a-zA-Z0-9\.\-_\\/]+)*" oninvalid="this.setCustomValidity('Topic may contain only letters, numbers, -, _, /, \\, . with spacing.')" oninput="this.setCustomValidity('')" maxlength="50" autocomplete="off" required type="text" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic.topicName %><% } %>">
             </div>
         </div>
         <hr>
