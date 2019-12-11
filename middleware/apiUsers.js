@@ -46,19 +46,29 @@ var postNewUserUrl = "http://localhost:8080/users",
         },
 
         postSingleUser: function(req, res, next){
-            request.post(postNewUserUrl, {json: req.body}, function(error, response, body){
-                if(!error && response.statusCode === 200){
-                    console.log("User post done.");
-                    res.redirect("/users");
-                }
-                else{
-                    console.log("Something went wrong: post new user to API.");
-
-                    res.locals.oldValues = req.body;
-                    res.locals.error = "Username is already used!";
-                    res.render("users/new.ejs");
-                }
-            });
+            if(req.body.password === req.body.passwordConfirm){
+                request.post(postNewUserUrl, {json: req.body}, function(error, response, body){
+                    if(!error && response.statusCode === 200){
+                        console.log("User post done.");
+                        res.redirect("/users");
+                    }
+                    else{
+                        console.log("Something went wrong: post new user to API.");
+    
+                        res.locals.oldValues = req.body;
+                        res.locals.error = "Username is already used!";
+                        res.render("users/new.ejs");
+                    }
+                });
+            }
+            else{
+                console.log("Something went wrong: post new user to API (wrong password confirmation).");
+    
+                res.locals.oldValues = req.body;
+                res.locals.error = "Passwords must be the same.";
+                res.render("users/new.ejs");
+            }
+            
         }
     };
    

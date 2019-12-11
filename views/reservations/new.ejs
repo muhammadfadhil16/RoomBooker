@@ -29,7 +29,7 @@
         <div class="userData">
             <h3>Topic:</h3>
             <div class="form-group">
-                <input class="form-control" pattern="[0-9]*[a-zA-Z]+(\s[a-zA-Z0-9\\/]+)*" oninvalid="this.setCustomValidity('Topic may contain only letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="50" autocomplete="off" required type="text" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic %><% } %>">
+                <input class="form-control" pattern="[0-9]*[a-zA-Z0-9]+(\s[a-zA-Z0-9\\/]+)*" oninvalid="this.setCustomValidity('Topic may contain only letters and numbers with spacing.')" oninput="this.setCustomValidity('')" maxlength="50" autocomplete="off" required type="text" name="topic" placeholder="reservation's topic" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.topic %><% } %>">
             </div>
         </div>
         <hr>

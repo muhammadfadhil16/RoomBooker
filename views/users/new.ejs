@@ -14,6 +14,7 @@
                 <input class="form-control" pattern="[a-zA-Z]+" oninvalid="this.setCustomValidity('Name must contain only letters without spacing.')" oninput="this.setCustomValidity('')" maxlength="50" autocomplete="off" required type="text" name="name" placeholder="name" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.name %><% } %>">
                 <input class="form-control" pattern="[a-zA-Z]+" oninvalid="this.setCustomValidity('Surname must contain only letters without spacing.')" oninput="this.setCustomValidity('')" maxlength="50" autocomplete="off" required type="text" name="surname" placeholder="surname" value="<% if(typeof oldValues !== "undefined"){ %><%= oldValues.surname %><% } %>">
                 <input class="form-control" autocomplete="off" required type="password" name="password" placeholder="password">
+                <input class="form-control" autocomplete="off" required type="password" name="passwordConfirm" placeholder="confirm password">
             </div>
         </div>
         <hr>

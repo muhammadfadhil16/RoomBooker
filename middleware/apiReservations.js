@@ -96,10 +96,16 @@ var getAllReservationsUrl = {
 
         updateSingleReservation: function(req, res, next){
             var tempUrl = updateReservationUrl + req.params.id;
+            var oldValues = Object.assign({}, res.locals.reservation);
 
             req.body.roomId = res.locals.rooms.find(function(room){ return room.name === req.body.roomId; }).roomId;
             req.body.start = req.body.start.split(" ").join("T" ).replace(/\//g, "-") + ":00+01:00";
             req.body.end = req.body.end.split(" ").join("T").replace(/\//g, "-") + ":00+01:00";
+
+            oldValues.start = req.body.start;
+            oldValues.end = req.body.end;
+            oldValues.roomId = req.body.roomId;
+            oldValues.topic.topicName = req.body.topic;
 
             request.post(tempUrl, {json: req.body}, function(error, response, body){
                 if(!error && response.statusCode === 200){
@@ -114,7 +120,7 @@ var getAllReservationsUrl = {
 
                     console.log("Something went wrong: update reservation to API.");
 
-                    res.locals.oldValues = res.locals.reservation;
+                    res.locals.oldValues = oldValues;
                     res.locals.error = error;    
                     res.render("reservations/edit.ejs");
                 }		

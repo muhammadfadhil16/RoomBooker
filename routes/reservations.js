@@ -1,7 +1,8 @@
 var express = require("express"),
 	router = express.Router(),
 	apiReservations = require("../middleware/apiReservations"),
-	apiRooms = require("../middleware/apiRooms");
+	apiRooms = require("../middleware/apiRooms"),
+	apiUsers = require("../middleware/apiUsers");
 
 
 router.get("/reservations", apiReservations.getAllReservations, function(req, res){
@@ -19,12 +20,12 @@ router.get("/reservations/new", apiRooms.getAllRooms, function(req, res){
 });
 
 
-router.get("/reservations/:id", apiRooms.getAllRooms, apiReservations.getSingleReservation, function(req, res){
+router.get("/reservations/:id", apiRooms.getAllRooms, apiReservations.getSingleReservation, apiUsers.getAllUsers, function(req, res){
 	res.render("reservations/show.ejs");
 });
 
 
-router.delete("/reservations/:id", apiRooms.getAllRooms, apiReservations.getSingleReservation, apiReservations.deleteSingleReservation, function(req, res){
+router.delete("/reservations/:id", apiRooms.getAllRooms, apiReservations.getSingleReservation, apiUsers.getAllUsers, apiReservations.deleteSingleReservation, function(req, res){
 	//implementation in middleware/apiReservations
 });
 

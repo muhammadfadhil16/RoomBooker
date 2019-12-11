@@ -34,7 +34,10 @@
     <% room.reservations.forEach(function(reservation){ %>
         <tr>
             <th scope="row">• <%= reservation.username %></th>
-            <td><%= reservation.start.split("T").join(" ").split("+")[0].slice(0, -3) %> - <%= reservation.end.split("T").join(" ").split("+")[0].slice(0, -3) %></td>
+            <td>
+              <%= reservation.start.split("T").join(" ").split("+")[0].slice(0, -3) %> - <%= reservation.end.split("T").join(" ").split("+")[0].slice(0, -3) %>
+              <a class="btn btn-success btn-md" href="/reservations/<%= reservation.reservationId %>">Go to reservation</a>
+            </td>
         </tr>
     <% }); %>
   </tbody>
