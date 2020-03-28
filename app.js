@@ -22,6 +22,6 @@ app.use(usersRoutes);
 
 
 //server port/ip
-app.listen(process.env.PORT, process.env.IP, function(){
-	console.log("Server is listening on port: 3000");
+app.listen(process.env.PORT || 3000, process.env.IP, function(){
+	console.log("Server is listening on port: " + (process.env.PORT || "3000"));
 });
