@@ -1,14 +1,14 @@
 var request = require("request");
-
+var localUrl = "http://localhost:8080/users";
 
 //API URLs	
-var postNewUserUrl = "http://localhost:8080/users",
+var postNewUserUrl = process.env.USERSURL || localUrl,
     getAllUsersUrl = {
-        url: "http://localhost:8080/users",
+        url: process.env.USERSURL || localUrl,
         json: true
     }
     getUserByIdUrl = {
-        url: "http://localhost:8080/users/",
+        url: (process.env.USERSURL || localUrl) + "/",
         json: true
     };
     

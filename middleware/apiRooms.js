@@ -1,16 +1,16 @@
 var request = require("request");
-
+var localUrl = "http://localhost:8080/rooms";
 
 //API URLs	
 var getAllRoomsUrl = {
-        url: "http://localhost:8080/rooms",
+        url: process.env.ROOMSURL || localUrl,
         json: true
 	},
 	getRoomByIdUrl = {
-		url: "http://localhost:8080/rooms/",
+		url: (process.env.ROOMSURL || localUrl) + "/",
 		json: true
 	},
-	postNewRoomUrl = "http://localhost:8080/rooms";
+	postNewRoomUrl = process.env.ROOMSURL || localUrl;
     
     //function that ping API
     module.exports = {

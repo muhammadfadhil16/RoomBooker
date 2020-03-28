@@ -1,18 +1,18 @@
 var request = require("request");
-
+var localUrl = "http://localhost:8080/reservations";
 
 //API URLs	
 var getAllReservationsUrl = {
-        url: "http://localhost:8080/reservations",
+        url: process.env.RESERVATIONSURL || localUrl,
         json: true
     },
     getReservationById = {
-        url: "http://localhost:8080/reservations/",
+        url: (process.env.RESERVATIONSURL || localUrl) + "/",
         json: true
     },
-    updateReservationUrl = "http://localhost:8080/reservations/",
-    deleteReservationUrl = "http://localhost:8080/reservations/",
-    postNewReservationUrl = "http://localhost:8080/reservations";
+    updateReservationUrl = (process.env.RESERVATIONSURL || localUrl) + "/",
+    deleteReservationUrl = (process.env.RESERVATIONSURL || localUrl) + "/",
+    postNewReservationUrl = process.env.RESERVATIONSURL || localUrl;
     
     
     //function that ping API
