@@ -61,3 +61,8 @@ https://mighty-wave-98006.herokuapp.com/
 * [Pefes](https://github.com/Pefes) - *Node.js server and front* 
 * [TheTerabit](https://github.com/TheTerabit) - *API*
 
+## Some outputs
+
+![img1](https://i.imgur.com/lXdy5vY.png)
+![img1](https://i.imgur.com/qHcrsju.png)
+![img1](https://i.imgur.com/0Bst2NN.png)
