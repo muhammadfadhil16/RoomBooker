@@ -47,7 +47,7 @@ node app.js
 
 ## Deployment
 
-https://mighty-wave-98006.herokuapp.com/
+https://room-booker-home.herokuapp.com/home
 
 ## Built With
 
