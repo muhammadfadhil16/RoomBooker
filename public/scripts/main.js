@@ -17,12 +17,9 @@ $(document).ready(function(){
         }
       });
     });
-});
 
-
-//type of reservations
-$(document).ready(function(){
-  $("#typeReservation").change(function(){
+    //type of reservations
+    $("#typeReservation").change(function(){
       var type = $(this).val();
       var currentDate = new Date();
 
@@ -36,27 +33,20 @@ $(document).ready(function(){
       else if(type === "All"){
         $("#reservationsTable tbody tr").show().addClass("visible");
       }
-  });
-});
-
-
-//search for users/rooms
-$(document).ready(function(){
-  $("#searchInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tbody tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
-  });
-});
 
-//reset button
-$(document).ready(function(){
-  $("#reset").click(function(){
-    $("input").not(":input[type=button], :input[type=submit], :input[type=reset]").val("");
-  });
-});
+    //search for users/rooms
+    $("#searchInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tbody tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
 
-$(document).ready(function(){
-  $(".errorMessage").delay(5000).fadeOut(10);
+    //reset button
+    $("#reset").click(function(){
+      $("input").not(":input[type=button], :input[type=submit], :input[type=reset]").val("");
+    });
+
+    $(".errorMessage").delay(5000).fadeOut(10);
 });
